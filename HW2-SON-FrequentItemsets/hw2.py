@@ -110,9 +110,9 @@ def sortKey(x):
     return len(x)+sum(x)/100000
 
 sc=SparkContext(appName='inf553')
-users=sc.textFile('users.dat').map(lambda x:x.split("::"))
-movies=sc.textFile('movies.dat').map(lambda x:x.split("::"))
-ratings=sc.textFile('ratings.dat').map(lambda x:x.split("::"))
+ratings=sc.textFile(sys.argv[1]).map(lambda x:x.split("::"))
+users=sc.textFile(sys.argv[2]).map(lambda x:x.split("::"))
+
 case=int(sys.argv[3])
 support=int(sys.argv[4])
 
